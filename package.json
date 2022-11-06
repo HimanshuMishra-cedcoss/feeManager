@@ -9,9 +9,12 @@
   "author": "Himanshu Mishra",
   "license": "ISC",
   "dependencies": {
+    "@vonage/server-sdk": "^2.11.2",
     "express": "^4.18.2",
+    "fast-two-sms": "^3.0.0",
     "mongodb": "^4.11.0",
     "mongoose": "^6.7.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "twilio": "^3.83.1"
   }
 }

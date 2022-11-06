@@ -1,4 +1,3 @@
-const { json } = require("express");
 const express = require("express");
 const router = express.Router();
 const sms = require("../models/msgBody");
@@ -13,7 +12,6 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
- 
   const smsData = new sms({
     smsText: req.body.smsText,
   });
@@ -28,7 +26,6 @@ router.post("/", async (req, res) => {
       }
     } else {
       const result = await smsData.save();
-    
       res.json("Sms text saved successfully.");
     }
   } catch (error) {
@@ -37,9 +34,7 @@ router.post("/", async (req, res) => {
 });
 
 const editSmsText = async (id, smsT) => {
-
   const result = await sms.findOneAndUpdate({ _id: id }, { smsText: smsT });
-
   if (result) {
     return true;
   } else {

@@ -3,7 +3,8 @@ const db = require("./dbConnect");
 const express = require("express");
 const registerRoute = require("./routers/register");
 const studentRoute = require("./routers/student");
-const msgBodyRoute = require("./routers/msgBody")
+const msgBodyRoute = require("./routers/msgBody");
+const sendSmsRoute = require("./routers/sendSms");
 // const bodyParser = require("body-parser");
 
 const app = express();
@@ -36,10 +37,16 @@ app.use("/register", registerRoute);
 app.use("/students", studentRoute);
 
 /**
- * api for sms text body 
+ * api for save and edit sms text body
  */
 
-app.use("/smstext" , msgBodyRoute )
+app.use("/smstext", msgBodyRoute);
+
+/**
+ * api to send sms
+ */
+
+app.use("/sendSms", sendSmsRoute);
 
 app.get("/", (req, res) => {
   res.send("hello himanshu");

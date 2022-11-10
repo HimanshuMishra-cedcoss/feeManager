@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@vonage/server-sdk": "^2.11.2",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "fast-two-sms": "^3.0.0",
     "mongodb": "^4.11.0",

@@ -5,9 +5,11 @@ const registerRoute = require("./routers/register");
 const studentRoute = require("./routers/student");
 const msgBodyRoute = require("./routers/msgBody");
 const sendSmsRoute = require("./routers/sendSms");
+const cors = require("cors");
 // const bodyParser = require("body-parser");
 
 const app = express();
+app.use(cors());
 
 /** bodyParser.urlencoded(options)
  * Parses the text as URL encoded data (which is how browsers tend to send form data from regular forms set to POST)
@@ -52,6 +54,6 @@ app.get("/", (req, res) => {
   res.send("hello himanshu");
 });
 
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log("Server Connected:");
 });

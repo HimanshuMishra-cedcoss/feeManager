@@ -5,6 +5,7 @@ const registerRoute = require("./routers/register");
 const studentRoute = require("./routers/student");
 const msgBodyRoute = require("./routers/msgBody");
 const sendSmsRoute = require("./routers/sendSms");
+const feeSubmit = require("./routers/feeSubmit");
 const cors = require("cors");
 // const bodyParser = require("body-parser");
 
@@ -49,6 +50,12 @@ app.use("/smstext", msgBodyRoute);
  */
 
 app.use("/sendSms", sendSmsRoute);
+
+/**
+ * api to add fee details
+ */
+
+app.use("/submitFee", feeSubmit);
 
 app.get("/", (req, res) => {
   res.send("hello himanshu");

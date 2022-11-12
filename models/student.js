@@ -100,6 +100,21 @@ const studentSchema = new mongoose.Schema({
     required: false,
     default: null,
   },
+  totalFee: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+  paidFees: {
+    type: Number,
+    required: false,
+    default: 0,
+  },
+  feeStatus: {
+    type: String,
+    required: false,
+    default: "NA",
+  },
 });
 
 module.exports = mongoose.model("student", studentSchema);

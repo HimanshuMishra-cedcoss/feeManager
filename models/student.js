@@ -115,6 +115,11 @@ const studentSchema = new mongoose.Schema({
     required: false,
     default: "NA",
   },
+  session: {
+    type: String,
+    required: false,
+    default: "NA"
+  }
 });
 
 module.exports = mongoose.model("student", studentSchema);

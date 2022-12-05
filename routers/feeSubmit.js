@@ -4,20 +4,17 @@ const student = require("../models/student");
 
 router.post("/", async (req, res) => {
   try {
-    const feeStatus =
-      req.body.totalFees === req.body.paidFees ? "Paid" : "Partially-Paid";
     const result = await student.findOneAndUpdate(
       { admissionNo: req.body.admissionNo },
       {
-        totalFee: req.body.totalFees,
+        submitFillMonth: req.body.submitFillMonth,
         paidFees: req.body.paidFees,
-        feeStatus: feeStatus,
       }
     );
     if (result) {
-      res.json("Fees updated successfully.");
+      res.json({ message: "Fees updated successfully.", success: true });
     } else {
-      res.json("Unable to update fees.");
+      res.json({ message: "Unable to submit the fees.", success: false });
     }
   } catch (error) {
     res.json({ error: error });

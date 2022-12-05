@@ -118,8 +118,18 @@ const studentSchema = new mongoose.Schema({
   session: {
     type: String,
     required: false,
-    default: "NA"
-  }
+    default: "NA",
+  },
+  RTE: {
+    type: String,
+    required: false,
+    default: "NA",
+  },
+  submitFillMonth: {
+    type: String,
+    required: false,
+    default: null,
+  },
 });
 
 module.exports = mongoose.model("student", studentSchema);

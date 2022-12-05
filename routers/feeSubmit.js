@@ -7,7 +7,7 @@ router.post("/", async (req, res) => {
     const feeStatus =
       req.body.totalFees === req.body.paidFees ? "Paid" : "Partially-Paid";
     const result = await student.findOneAndUpdate(
-      { _id: req.body.admissionNo },
+      { admissionNo: req.body.admissionNo },
       {
         totalFee: req.body.totalFees,
         paidFees: req.body.paidFees,

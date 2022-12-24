@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const accountSid = "AC69b074dfff4f4efbe5ff0c881c69d4d5";
-const authToken = "c5b5b88196df235c78763a5e331587e6";
+// const authToken = "57ce4bcf5e18ca15fc2722a3e3047921";
 const client = require("twilio")(accountSid, authToken);
 
 router.get("/", (req, res) => {
@@ -10,13 +10,13 @@ router.get("/", (req, res) => {
     .create({
       body: "Welcome onboard . Congratulations ! Welcome to the Raksha Career Academy. Best Wishes.",
       from: "+15095161509",
-      to: "+917607906213",
+      to: "+917007416400",
     })
     .then((message) => {
       if (message.errorMessage !== null) {
-        res.json({ error: message.errorMessage });
+        res.json({ message: message.errorMessage, success: false });
       } else {
-        res.json("Message sent successfully.");
+        res.json({ message: "Message sent successfully.", success: true });
       }
     })
     .catch((err) => {

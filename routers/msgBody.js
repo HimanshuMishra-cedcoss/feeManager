@@ -12,17 +12,18 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const smsData = new sms({
-    smsText: req.body.smsText,
-  });
+  const smsData = new sms(req.body);
   try {
     const preSavedSms = await sms.find();
     if (preSavedSms[0]._id) {
-      const editRes = await editSmsText(preSavedSms[0]._id, req.body.smsText);
+      const editRes = await editSmsText(preSavedSms[0]._id, req.body);
       if (editRes) {
-        res.json("Sms text edited successfully");
+        res.json({ message: "Sms text edited successfully", success: true });
       } else {
-        res.json("Unable to edit. Something went wrong.");
+        res.json({
+          message: "Unable to edit. Something went wrong.",
+          success: false,
+        });
       }
     } else {
       const result = await smsData.save();
@@ -34,7 +35,7 @@ router.post("/", async (req, res) => {
 });
 
 const editSmsText = async (id, smsT) => {
-  const result = await sms.findOneAndUpdate({ _id: id }, { smsText: smsT });
+  const result = await sms.findOneAndUpdate({ _id: id }, smsT);
   if (result) {
     return true;
   } else {

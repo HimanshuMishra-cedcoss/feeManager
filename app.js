@@ -57,9 +57,14 @@ app.use("/sendSms", sendSmsRoute);
 
 app.use("/submitFee", feeSubmit);
 
-app.get("/", (req, res) => {
-  res.send("hello himanshu");
-});
+if (process.env.NODE_ENV === "production") {
+  const path = require("path");
+
+  app.get("/", (req, res) => {
+    app.use(express.static(path.resolve("_dirname", "client", "build")));
+    res.sendFile(path.resolve("_dirname", "client", "build", "index.html"));
+  });
+}
 
 app.listen(4000, () => {
   console.log("Server Connected:");

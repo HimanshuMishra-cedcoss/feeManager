@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const { MONGOURI } = require("./Config/keys");
-
+const { MONGOURI } = require("./Config/dev");
+console.log(MONGOURI, "MONGOURI");
 mongoose.connect(MONGOURI, { useNewUrlParser: true });
 const con = mongoose.connection;
 con.on("open", async () => {
